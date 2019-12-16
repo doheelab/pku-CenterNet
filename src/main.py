@@ -97,6 +97,9 @@ def main(opt):
           param_group['lr'] = lr
   logger.close()
 
+import argparse
+
 if __name__ == '__main__':
-  opt = opts().parse()
+  #opt = opts().parse()
+  opt=argparse.Namespace(K=100, aggr_weight=0.0, agnostic_ex=False, arch='dla_34', aug_ddd=0.5, aug_rot=0, batch_size=8, cat_spec_wh=False, center_thresh=0.1, chunk_sizes=[7], data_dir='/home/dohee/kaggle/CenterNet/src/lib/../../data', dataset='kitti', debug=0, debug_dir='/home/dohee/kaggle/CenterNet/src/lib/../../exp/ddd/3dop/debug', debugger_theme='white', demo='', dense_hp=False, dense_wh=False, dep_weight=1, dim_weight=1, down_ratio=4, eval_oracle_dep=False, eval_oracle_hm=False, eval_oracle_hmhp=False, eval_oracle_hp_offset=False, eval_oracle_kps=False, eval_oracle_offset=False, eval_oracle_wh=False, exp_dir='/home/dohee/kaggle/CenterNet/src/lib/../../exp/ddd', exp_id='3dop', fix_res=True, flip=0.5, flip_test=False, gpus=[0], gpus_str='0', head_conv=256, hide_data_time=False, hm_hp=True, hm_hp_weight=1, hm_weight=1, hp_weight=1, input_h=-1, input_res=-1, input_w=-1, keep_res=False, kitti_split='3dop', load_model='', lr=0.000125, lr_step=[45, 60], master_batch_size=7, metric='loss', mse_loss=False, nms=False, no_color_aug=False, norm_wh=False, not_cuda_benchmark=False, not_hm_hp=False, not_prefetch_test=False, not_rand_crop=False, not_reg_bbox=False, not_reg_hp_offset=False, not_reg_offset=False, num_epochs=70, num_iters=-1, num_stacks=1, num_workers=4, off_weight=1, pad=31, peak_thresh=0.2, print_iter=0, rect_mask=False, reg_bbox=True, reg_hp_offset=True, reg_loss='l1', reg_offset=True, resume=False, root_dir='/home/dohee/kaggle/CenterNet/src/lib/../..', rot_weight=1, rotate=0, save_all=False, save_dir='/home/dohee/kaggle/CenterNet/src/lib/../../exp/ddd/3dop', scale=0.4, scores_thresh=0.1, seed=317, shift=0.1, task='ddd', test=False, test_scales=[1.0], trainval=False, val_intervals=5, vis_thresh=0.3, wh_weight=0.1)
   main(opt)

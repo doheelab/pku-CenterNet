@@ -28,7 +28,10 @@ class DddDataset(data.Dataset):
     img_id = self.images[index]
     img_info = self.coco.loadImgs(ids=[img_id])[0]
     img_path = os.path.join(self.img_dir, img_info['file_name'])
-    img = cv2.imread(img_path)
+    #img = cv2.imread(img_path)
+    img = cv2.imread(os.path.join('/home/dohee/kaggle/CenterNet/data/kitti/training/image_2',img_info['file_name']))
+    #print("img_info:", img_info)
+    #print("self.img_dir:", self.img_dir)
     if 'calib' in img_info:
       calib = np.array(img_info['calib'], dtype=np.float32)
     else:

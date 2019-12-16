@@ -13,6 +13,12 @@ from utils.post_process import ddd_post_process
 from utils.oracle_utils import gen_oracle_map
 from .base_trainer import BaseTrainer
 
+# add path
+#import sys
+#sys.path.insert(0, "/home/dohee/kaggle/CenterNet/src")
+#sys.path.insert(0, "/home/dohee/kaggle/CenterNet/src/lib")
+#import main
+
 class DddLoss(torch.nn.Module):
   def __init__(self, opt):
     super(DddLoss, self).__init__()
@@ -23,10 +29,10 @@ class DddLoss(torch.nn.Module):
   
   def forward(self, outputs, batch):
     opt = self.opt
-
     hm_loss, dep_loss, rot_loss, dim_loss = 0, 0, 0, 0
     wh_loss, off_loss = 0, 0
     for s in range(opt.num_stacks):
+      print('outputs[0]', outputs[0])
       output = outputs[s]
       output['hm'] = _sigmoid(output['hm'])
       output['dep'] = 1. / (output['dep'].sigmoid() + 1e-6) - 1.
@@ -153,3 +159,5 @@ class DddTrainer(BaseTrainer):
     for j in range(1, opt.num_classes + 1):
       keep_inds = (results[img_id][j][:, -1] > opt.center_thresh)
       results[img_id][j] = results[img_id][j][keep_inds]
+
+
